@@ -1,30 +1,63 @@
-import { styled, css } from "styled-components";
+import { css, styled } from 'styled-components';
 
-const BasicButton = ({ variant, size, type, children, ...buttonProps }) => {
+const SJButton = ({ variant, size, shape, children, ...rest }) => {
   return (
-    <Button variant={variant} size={size} type={type} {...buttonProps}>
+    <Button variant={variant} size={size} shape={shape} {...rest}>
       {children}
     </Button>
   );
 };
-
-export default BasicButton;
+export default SJButton;
 
 const variantCSS = {
-  primary: css``,
-  secondary: css``,
-  disabled: css``,
+  primary: css`
+    background-color: ${({ theme }) => theme.COLORS.primary[300]};
+    color: ${({ theme }) => theme.COLORS.font};
+  `,
+  secondary: css`
+    background-color: ${({ theme }) => theme.COLORS.secondary};
+  `,
 };
 
-const sizeCSS = {};
+const sizeCSS = {
+  small: css`
+    width: 100px;
+    height: 30px;
+    padding: 10px 0;
+  `,
+  medium: css`
+    width: 80px;
+    height: 50px;
+    padding: 10px 0;
+  `,
+  large: css`
+    width: 100px;
+    height: 30px;
+    padding: 10px 0;
+  `,
+  full: css`
+    width: 100%;
+    aspect-ratio: 8 / 1;
+    height: 50px;
+  `,
+};
+
+const shapeCSS = {
+  shape: css`
+    border-radius: 8px;
+  `,
+  round: css`
+    border-radius: 50%;
+  `,
+};
 
 const Button = styled.button`
-  ${({ variant }) => variantCSS[variant]}
+  ${({ variant }) => variantCSS[variant]} // primary
   ${({ size }) => sizeCSS[size]}
-    cursor: pointer;
-  transition: all 0.6s;
-
-  &:hover,
-  &:focus {
+  ${({ shape }) => shapeCSS[shape]}
+  cursor: pointer;
+  border: none;
+  &:hover {
+    opacity: 0.8;
   }
 `;
