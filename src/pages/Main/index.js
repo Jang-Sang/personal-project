@@ -1,6 +1,12 @@
-const { Product } = require('./components/product');
+import ImgSlider from './components/imagesilder';
+import Product from './components/product';
 
 const MainPage = () => {
-  return <Product />;
+  return (
+    <>
+      <ImgSlider />
+      <Product />;
+    </>
+  );
 };
 export default MainPage;

@@ -1,17 +1,12 @@
-import { axiosInstance } from "./core";
+import { axiosInstance } from './core';
 
-const PATH = "/api/user";
+const PATH = '/api/user';
 const AuthApi = {
   // User - account
 
-  // sign-up
-  async postSignUpData(signupData) {
-    const res = await axiosInstance().post(PATH, signupData);
-    return res;
-  },
   // sign-in
   async postLoginUserData(loginUserData) {
-    const res = await axiosInstance().post("/api/user/login", loginUserData);
+    const res = await axiosInstance().post('/api/user/login', loginUserData);
     return res.data;
   },
   // get user info.
@@ -51,7 +46,7 @@ const AuthApi = {
   // duplicate check(nickName)
   async getCheckNickName(nickName) {
     const res = await axiosInstance().get(
-      `${PATH}/check/nickname?nickname=${nickName}`
+      `${PATH}/check/nickname?nickname=${nickName}`,
     );
     return res.data;
   },
@@ -69,28 +64,28 @@ const AuthApi = {
   // get my liked product
   async getMyPageLikeProduct(pageParam) {
     const res = await axiosInstance().get(
-      `${PATH}/my-page/like-product-list?page=${pageParam}`
+      `${PATH}/my-page/like-product-list?page=${pageParam}`,
     );
     return res.data;
   },
   // get my products list
   async getMyProductList(page, category) {
     const res = await axiosInstance().get(
-      `${PATH}/my-page/product-list?page=${page}&category=${category}`
+      `${PATH}/my-page/product-list?page=${page}&category=${category}`,
     );
     return res.data;
   },
   // get my interested products list
   async getInterestedProductList(page) {
     const res = await axiosInstance().get(
-      `${PATH}/my-page/like-product-list?page=${page}`
+      `${PATH}/my-page/like-product-list?page=${page}`,
     );
     return res.data;
   },
   // get my account book
   async getMyHousekeepingBook(pageParam, category, start, end) {
     const res = await axiosInstance().get(
-      `${PATH}/my-page/account-book?page=${pageParam}&category=${category}&start=${start}&end=${end}`
+      `${PATH}/my-page/account-book?page=${pageParam}&category=${category}&start=${start}&end=${end}`,
     );
     return res;
   },
